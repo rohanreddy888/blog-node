@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include("./partials/head.ejs") %>
-    <title>Homepage</title>
+  <%- include("./partials/head.ejs") %>
+  <title>Homepage</title>
 </head>
+
 <body>
-    <%- include("./partials/nav.ejs") %>
-    <div class="px-2 py-2">
-        <h1>Homepage</h1>
+  <%- include("./partials/nav.ejs") %>
+  <div class="container mt-3">
+
+    <div class="row gap-3">
+      <% blogs.forEach(blog => { %>
+      <div class="card" style="width: 18rem;">
+        <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title  %></h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+      <% }) %>
     </div>
-    <%- include("./partials/scripts.ejs") %>
+
+  </div>
+  <%- include("./partials/scripts.ejs") %>
 </body>
+
 </html>
