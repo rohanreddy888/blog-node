@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -7,10 +8,10 @@ const userRouter = require("./routes/user");
 const blogRouter = require("./routes/blog");
 const { checkForAuthentication } = require("./middlewares/authentication");
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT;
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/blogger")
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("MongoDB Connected");
   })
